@@ -1,0 +1,56 @@
+{
+  "generator-jhipster": {
+    "blueprints": [
+      {
+        "name": "generator-jhipster-kotlin",
+        "version": "1.14.0"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-kotlin",
+        "version": "1.14.0"
+      }
+    ],
+    "applicationType": "monolith",
+    "baseName": "todo",
+    "jhipsterVersion": "7.5.0",
+    "skipUserManagement": false,
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "testFrameworks": [],
+    "pages": [],
+    "creationTimestamp": 1645523132788,
+    "serviceDiscoveryType": "no",
+    "reactive": true,
+    "authenticationType": "jwt",
+    "packageName": "com.scnu.todo",
+    "serverPort": "8080",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "buildTool": "gradle",
+    "serverSideOptions": [],
+    "websocket": false,
+    "searchEngine": false,
+    "messageBroker": false,
+    "enableSwaggerCodegen": false,
+    "clientFramework": "no",
+    "skipClient": true,
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "jwtSecretKey": "OTU4N2M4MjU4YWYxZjBhMTYyNjI1MDFlMWNmMmM4ZGJlMjdkMDY0ZGMyYmQxMzIxMmFmZmUwOGY0YzY1YTIzNTkwMWNmMmM5ODkyNjBlYjE0YjJiZjY5NDJjMjFkNmFjYWQ4YzRiMDM3ZmVmMzAzZDU4OWY4NTU0NTVmZWZkZjk=",
+    "devServerPort": 9060,
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "withAdminUi": true,
+    "languages": ["en"],
+    "enableGradleEnterprise": false
+  }
+}
