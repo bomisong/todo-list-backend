@@ -1,25 +1,25 @@
-POST http://127.0.0.1:8080/api/todos
+###
+POST http://localhost:8080/api/todos
 Content-Type: application/json
 
 {
-    "taskName": "hello world",
-    "deadline": 10
+    "taskName": "scnu class first time",
+    "deadline": 5
 }
 
 ###
-GET http://127.0.0.1:8080/api/todos
+GET http://localhost:8080/api/todos
 Content-Type: application/json
 
 ###
-PUT http://127.0.0.1:8080/api/todos
+PUT http://localhost:8080/api/todos
 Content-Type: application/json
 
 {
-    "id": "",
-    "taskName": "hello world2",
-    "deadline": 10
+    "id": "621779b6be188d77612b687a",
+    "taskName": "scnu class second time",
+    "deadline": 5
 }
 
 ###
-GET http://127.0.0.1:8080/api/todos
-Content-Type: application/json
+DELETE http://localhost:8080/api/todos/621779b6be188d77612b687a
