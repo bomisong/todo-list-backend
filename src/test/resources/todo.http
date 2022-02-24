@@ -1,0 +1,25 @@
+POST http://127.0.0.1:8080/api/todos
+Content-Type: application/json
+
+{
+    "taskName": "hello world",
+    "deadline": 10
+}
+
+###
+GET http://127.0.0.1:8080/api/todos
+Content-Type: application/json
+
+###
+PUT http://127.0.0.1:8080/api/todos
+Content-Type: application/json
+
+{
+    "id": "",
+    "taskName": "hello world2",
+    "deadline": 10
+}
+
+###
+GET http://127.0.0.1:8080/api/todos
+Content-Type: application/json
