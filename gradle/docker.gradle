@@ -1,9 +1,14 @@
 jib {
     from {
         image = "eclipse-temurin:11-jre-focal"
+//        platforms {
+//            platform {
+//                architecture = "arm64"
+//                os = "linux" }
+//        }
     }
     to {
-        image = "todo:latest"
+        image = "scnu.com/todo-list-backend:latest"
     }
     container {
         entrypoint = ["bash", "-c", "/entrypoint.sh"]
