@@ -71,7 +71,20 @@ class UserResource(
 ) {
 
     companion object {
-        private val ALLOWED_ORDERED_PROPERTIES = arrayOf("id", "login", "firstName", "lastName", "email", "activated", "langKey", "createdBy", "createdDate", "lastModifiedBy", "lastModifiedDate")
+        private val ALLOWED_ORDERED_PROPERTIES = arrayOf(
+            "id",
+            "login",
+            "firstName",
+            "lastName",
+            "email",
+            "activated",
+            "langKey",
+            "createdBy",
+            "createdDate",
+            "lastModifiedBy",
+            "lastModifiedDate",
+            "instagram"
+        )
     }
 
     private val log = LoggerFactory.getLogger(javaClass)
@@ -174,7 +187,7 @@ class UserResource(
     @PreAuthorize("hasAuthority(\"$ADMIN\")")
     fun getAllUsers(
         request: ServerHttpRequest,
-        @org.springdoc.api.annotations.ParameterObject pageable: Pageable
+        @org.springdoc.api.annotations.ParameterObject pageable: Pageable // page 10, count 30
     ): Mono<ResponseEntity<Flux<AdminUserDTO>>> {
         log.debug("REST request to get all User for an admin")
         if (!onlyContainsAllowedProperties(pageable)) {
@@ -183,9 +196,15 @@ class UserResource(
 
         return userService.countManagedUsers()
             .map { total -> PageImpl(mutableListOf<AdminUserDTO>(), pageable, total!!) }
-            .map { page -> PaginationUtil.generatePaginationHttpHeaders(UriComponentsBuilder.fromHttpRequest(request), page) }
+            .map { page ->
+                PaginationUtil.generatePaginationHttpHeaders(
+                    UriComponentsBuilder.fromHttpRequest(request),
+                    page
+                )
+            }
             .map { headers -> ResponseEntity.ok().headers(headers).body(userService.getAllManagedUsers(pageable)) }
     }
+
     private fun onlyContainsAllowedProperties(pageable: Pageable) =
         pageable.sort.map(Sort.Order::getProperty).all { ALLOWED_ORDERED_PROPERTIES.contains(it) }
 
@@ -216,6 +235,9 @@ class UserResource(
     fun deleteUser(@PathVariable @Pattern(regexp = LOGIN_REGEX) login: String): Mono<ResponseEntity<Void>> {
         log.debug("REST request to delete User: $login")
         return userService.deleteUser(login)
-            .map { ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", login)).build<Void>() }
+            .map {
+                ResponseEntity.noContent()
+                    .headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", login)).build<Void>()
+            }
     }
 }
